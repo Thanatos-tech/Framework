@@ -47,12 +47,6 @@ public class TommyHilfigerConcreteItemPage extends AbstractPage {
         return this;
     }
 
-    public TommyHilfigerConcreteItemPage clickFavoriteButton()
-    {
-        addToCardButtonLocator.click();
-        return this;
-    }
-
     public TommyHilfigerConcreteItemPage addItemInFavorite()
     {
         addInFavoriteToggleLocator.click();
@@ -76,8 +70,6 @@ public class TommyHilfigerConcreteItemPage extends AbstractPage {
         return this;
     }
 
-
-
     public TommyHilfigerConcreteItemPage addToCard()
     {
         addToCardButtonLocator.click();
@@ -85,21 +77,6 @@ public class TommyHilfigerConcreteItemPage extends AbstractPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='header__tabs--mini-basket']")));
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='header__tabs--mini-basket']")));
-        return this;
-    }
-
-    public TommyHilfigerConcreteItemPage waitForMiniCard()
-    {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='header__tabs--mini-basket']")));
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='header__tabs--mini-basket']")));
-        return this;
-    }
-
-    public TommyHilfigerConcreteItemPage waitForCardPageButton()
-    {
-
         return this;
     }
 

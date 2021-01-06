@@ -11,29 +11,11 @@ import java.util.List;
 
 public class TommyHilfigerCardPage extends AbstractPage
 {
-    @FindBy(xpath = "//span[text()='Изменить']")
-    private WebElement changeItemsCountButtonLocator;
-
-    @FindBy(xpath = "//div[@id='dropdown-quantity']")
-    private WebElement itemsCountDropdownLocator;
-
-    @FindBy(xpath = "//li[@data-value='2']")
-    private WebElement newItemsCountLocator;
-
-    @FindBy(xpath = "//span[text()='Сохранить']")
-    private WebElement saveChangesButtonLocator;
-
     @FindBy(xpath = "//div[@class='product-details__cta-wrap ']//span[text()='Удалить']")
     private WebElement removeItemButtonLocator;
 
     @FindBy(xpath = "//p[@class='ShoppingBagContainer__empty-cta--only-empty-message']")
     private WebElement cardIsEmptyMessageLocator;
-
-    @FindBy(xpath = "//a[@class='product-details__description']")
-    private WebElement itemInCardLocator;
-
-    @FindBy(xpath = "//h1[@data-qa='section-header']")
-    private WebElement cardIsNotEmptyLocator;
 
     @FindBy(xpath = "//button[@class='cookie-notice__agree-button cookie-notice__agree-button--ru button']")
     private WebElement closeCookiesPoliticsButtonLocator;
@@ -46,35 +28,6 @@ public class TommyHilfigerCardPage extends AbstractPage
     public TommyHilfigerCardPage openPage()
     {
         driver.get("https://ru.tommy.com/shopping-bag");
-        return this;
-    }
-
-    public int getItemsInCardCount()
-    {
-        return driver.findElements(By.xpath("//div[@class='ProductItem product-details ']")).size();
-    }
-
-    public TommyHilfigerCardPage changeItemsCount()
-    {
-        changeItemsCountButtonLocator.click();
-        return this;
-    }
-
-    public TommyHilfigerCardPage clickItemsCountDropdown()
-    {
-        itemsCountDropdownLocator.click();
-        return this;
-    }
-
-    public TommyHilfigerCardPage selectNewItemsCount()
-    {
-        newItemsCountLocator.click();
-        return this;
-    }
-
-    public TommyHilfigerCardPage saveChanges()
-    {
-        saveChangesButtonLocator.click();
         return this;
     }
 
@@ -93,35 +46,12 @@ public class TommyHilfigerCardPage extends AbstractPage
         return cardIsEmptyMessageLocator.getText();
     }
 
-    public String getMessageInfo()
-    {
-        return cardIsEmptyMessageLocator.getText();
-    }
-
-    public boolean checkCardIsNotEmpty()
-    {
-        return cardIsNotEmptyLocator.isDisplayed();
-    }
-
-    public TommyHilfigerCardPage waitForItem()
-    {
-        new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@data-qa='section-header']")));
-        return this;
-    }
-
     public TommyHilfigerCardPage closeCoockiesPolitics()
     {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@data-qa='section-header']")));
         closeCookiesPoliticsButtonLocator.click();
         return this;
-    }
-
-
-    public String checkNameOfItem()
-    {
-        return itemInCardLocator.getText();
     }
 
 }
