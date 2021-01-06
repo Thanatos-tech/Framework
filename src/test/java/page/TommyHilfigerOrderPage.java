@@ -1,5 +1,6 @@
 package page;
 
+import model.UserData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,12 +41,12 @@ public class TommyHilfigerOrderPage extends AbstractPage {
         return this;
     }
 
-    public TommyHilfigerOrderPage inputPromocode(String promocode)
+    public TommyHilfigerOrderPage inputPromocode(UserData userData)
     {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='promotionCodeInput']")));
         promocodeLineLocator.click();
-        promocodeLineLocator.sendKeys(promocode);
+        promocodeLineLocator.sendKeys(userData.getPromocode());
         return this;
     }
 

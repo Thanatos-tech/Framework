@@ -1,13 +1,16 @@
 package test;
 
+import model.UserData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.TommyHilfigerConcreteItemPage;
+import service.UserDataCreator;
 
 public class UsePromocodeTest extends CommonConditions {
     @Test
     public void usePromocode()
     {
+        UserData userData = UserDataCreator.withCredentialsFromProperty();
         boolean promocodeIsUsed = new TommyHilfigerConcreteItemPage(driver)
                 .openPage()
                 .closeCoockiesPolitics()
@@ -16,7 +19,7 @@ public class UsePromocodeTest extends CommonConditions {
                 .clickOrderButton()
                 .continueAsAGuest()
                 .clickPromocodeButton()
-                .inputPromocode("TH-WE-10-7N99HB")
+                .inputPromocode(userData)
                 .activatePromocode()
                 .isRemovePromocodeButtonActive();
         Assert.assertEquals(promocodeIsUsed,true);

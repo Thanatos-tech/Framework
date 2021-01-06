@@ -9,6 +9,7 @@ public class UserDataCreator {
     public static final String USER_VALUEFORSEARCHLINE="test.data.valueForSearchLine";
 
     public static UserData withCredentialsFromProperty(){
-        return new UserData(USER_EMAIL, USER_PASSWORD,USER_PROMOCODE, USER_VALUEFORSEARCHLINE);
+        return new UserData(TestDataReader.getTestData(USER_EMAIL), TestDataReader.getTestData(USER_PASSWORD)
+                ,TestDataReader.getTestData(USER_PROMOCODE), TestDataReader.getTestData(USER_VALUEFORSEARCHLINE));
     }
 }

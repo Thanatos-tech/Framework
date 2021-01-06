@@ -1,7 +1,6 @@
 package page;
 
 import model.UserData;
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -109,21 +108,21 @@ public class TommyHilfigerHomePage extends AbstractPage
         return this;
     }
 
-    public TommyHilfigerHomePage inputEmail(String email)
+    public TommyHilfigerHomePage inputEmail(UserData userData)
     {
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='logonId']")));
         emailInputLineLocator.click();
-        emailInputLineLocator.sendKeys(email);
+        emailInputLineLocator.sendKeys(userData.getEmail());
         return this;
     }
 
-    public TommyHilfigerHomePage inputPassword(String password)
+    public TommyHilfigerHomePage inputPassword(UserData userData)
     {
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='uid-27']")));
         passwordInputLineLocator.click();
-        passwordInputLineLocator.sendKeys(password);
+        passwordInputLineLocator.sendKeys(userData.getPassword());
         return this;
     }
 
@@ -140,10 +139,10 @@ public class TommyHilfigerHomePage extends AbstractPage
         return personalCabinetButtonLocator.isDisplayed();
     }
 
-    public TommyHilfigerSearchPage inputValueInSearchLine(String valueForSearchLine)
+    public TommyHilfigerSearchPage inputValueInSearchLine(UserData userData)
     {
         searchLineLocator.click();
-        searchLineLocator.sendKeys(valueForSearchLine);
+        searchLineLocator.sendKeys(userData.getValueForSearchLine());
         searchLineLocator.sendKeys(Keys.ENTER);
         return new TommyHilfigerSearchPage(driver);
     }
